@@ -20,6 +20,7 @@ export type RootRenderFunction<HostElement = RendererElement> = (
 ) => void
 
 export function createRenderer(options: RendererOptions) {
+  // 分割代入時に別名を付ける
   const {
     patchProp: hostPatchProp,
     createElement: hostCreateElement,
