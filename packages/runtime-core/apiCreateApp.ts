@@ -5,13 +5,10 @@ export interface App<HostElement = any> {
   mount(rootContainer: HostElement | string): void
 }
 
-export type CreateAppFunction<HostElement> = (
-  rootComponent: Component,
-) => App<HostElement>
+export type CreateAppFunction<HostElement> = (rootComponent: Component,) => App<HostElement>
 
-export function createAppAPI<HostElement>(
-  render: RootRenderFunction<HostElement>,
-): CreateAppFunction<HostElement> {
+export function createAppAPI<HostElement>(render: RootRenderFunction<HostElement>,): CreateAppFunction<HostElement> {
+
   return function createApp(rootComponent) {
     const app: App = {
       mount(rootContainer: HostElement) {
@@ -23,7 +20,6 @@ export function createAppAPI<HostElement>(
         updateComponent()
       },
     }
-
     return app
   }
 }
