@@ -5,5 +5,5 @@ export function h(
   props: VNodeProps,
   children: (VNode | string)[],
 ) {
-  createVNode(type, props, children)
+  return createVNode(type, props, children)
 }
