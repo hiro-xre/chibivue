@@ -1,11 +1,14 @@
+import type { RendererNode } from './renderer'
+
 export const Text = Symbol()
 
 export type VNodeTypes = string | typeof Text
 
-export interface VNode {
+export interface VNode<HostNode = RendererNode> {
   type: VNodeTypes
   props: VNodeProps | null
   children: VNodeNormalizedChildren
+  el: HostNode | undefined
 }
 
 export interface VNodeProps {
@@ -24,7 +27,7 @@ export function createVNode(
   props: VNodeProps | null,
   children: VNodeNormalizedChildren,
 ): VNode {
-  const vnode: VNode = { type, props, children }
+  const vnode: VNode = { type, props, children: children, el: undefined }
   return vnode
 }
 
